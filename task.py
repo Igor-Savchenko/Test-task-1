@@ -37,7 +37,7 @@ def calculate_n_days_returns(timeseries_of_1_day_returns, n):
     n - number of days in period for return calculation
     """
     # To calculate the prices, we need to set the initial value of the price. It can be
-    # arbitrary, because it will redused when calculating the n-day returns. Verified.
+    # arbitrary, because it will reduсed when calculating the n-day returns. Verified.
     p=[1,]
 
     for item in timeseries_of_1_day_returns:
@@ -87,12 +87,12 @@ if __name__ == '__main__':
     # Calculation of 10-day returns
     timeseries_of_10_day_returns=calculate_n_days_returns(timeseries_of_1_day_returns,10)
     # Calculation of the required distribution of 1 percentile
-    number_of_trials=1000000
+    NUMBER_OF_TRIALS=1000001
     distribution_of_1_percentile=generate_percentile_distribution(timeseries_of_10_day_returns, 
-                                                                    number_of_trials=number_of_trials)
+                                                                    number_of_trials=NUMBER_OF_TRIALS)
     # Save the necessary data
-    file_name_for_10_day_returns_set='Test-task-1\\set_of_10-day_returns_'+str(number_of_trials)+'_trials.data'
-    file_name_for_distribution_of_1_percentile='Test-task-1\\distribution_of_1_percentile_'+str(number_of_trials)+'_trials.data'
+    file_name_for_10_day_returns_set='Test-task-1\\set_of_10-day_returns_'+str(NUMBER_OF_TRIALS)+'_trials.data'
+    file_name_for_distribution_of_1_percentile='Test-task-1\\distribution_of_1_percentile_'+str(NUMBER_OF_TRIALS)+'_trials.data'
     with open(file_name_for_10_day_returns_set, 'wb') as filehandle:
         pickle.dump(timeseries_of_10_day_returns, filehandle)
     with open(file_name_for_distribution_of_1_percentile, 'wb') as filehandle:

@@ -5,10 +5,12 @@ import matplotlib.pyplot as plt
 
 from task import generate_percentile_distribution
 
+# load initial distribution
 FILE_NAME='Test-task-1\\set_of_10-day_returns_1000000_trials.data'
 with open(FILE_NAME, 'rb') as filehandle:
     timeseries_of_10_day_returns=pickle.load(filehandle)
 
+# Generate distributions with a given numbers of trials
 NUMBER_OF_TRIALS=10000
 distributions=[]
 for i in range(100):
@@ -18,6 +20,8 @@ arr_mean = []
 arr_median = []
 arr_std_dev = []
 arr_variation = []
+
+# Calculate statistical metrics for all distributions
 for dist in distributions:
     arr_mean.append(statistics.mean(dist))
     arr_median.append(statistics.median(dist))
@@ -37,7 +41,7 @@ p1.hist(arr_mean,
             alpha=0.5, 
             color='blue', 
             label='Mean = ' + str(statistics.mean(arr_mean)) + '\n Standard deviation'+str(statistics.stdev(arr_mean)))
-
+# Plot histograms of metrics 
 fig2, p2=plt.subplots()
 plt.title('The histogram of the standard deviation (number of trials = '+str(NUMBER_OF_TRIALS)+')')
 plt.xlabel('Standard deviation')
